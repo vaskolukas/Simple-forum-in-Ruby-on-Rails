@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4"><%= @post.title %></h1>
+          <p class="lead"><%= "Published at " << time_ago_in_words(@post.created_at) << " by " << @post.user.email %></p>
+          <p><%= @post.content %></p>
+          <% if current_user && @post.user.id == current_user.id %>
+            <%= link_to "Edit",  edit_post_path(@post), :class => "btn btn-primary btn-sm" %>
+            <%= link_to "Delete",  post_path(@post), method: :delete, data: {confirm: "Are you sure ?"}, :class => "btn btn-danger btn-sm" %>
+          <% end %>
+          <hr class="mt-4 mb-2"/>
+          <h5>Total comments <%= @post.comments.count %></h5>
+          <%= render @post.comments %>
+          <hr class="mt-2 mb-2"/>
+          <%= render "comments/form" if user_signed_in? %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

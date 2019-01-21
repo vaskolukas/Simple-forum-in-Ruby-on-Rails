@@ -1,0 +1,6 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted"><%= comment.user.email << ' ' <<  comment.created_at.strftime('%d.%m.%Y %H:%M') %></div>
+    <%= comment.comment %>
+  </div>
+</div>

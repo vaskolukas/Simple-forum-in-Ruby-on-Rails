@@ -1,0 +1,7 @@
+<%= form_for ([@post,@post.comments.build]) do |f| %>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <%= f.text_area :comment,:id => 'comment',:class => "form-control" %>
+  </div>
+  <%= f.submit "Create", :class => "btn btn-primary" %>
+<% end %>
